@@ -1,12 +1,15 @@
 package view;
 
 import control.Pastas;
+import control.WinRegistry;
 
 public class Principal {
 
 	public static void main(String[] args) {
 		
-		
+		WinRegistry wi = new WinRegistry();
+		wi.dolly();
+		wi.wallpaper();
 		
 		Thread a = new Pastas("A");
 		Thread b = new Pastas("B");
