@@ -1,5 +1,7 @@
 package view;
 
+import java.io.IOException;
+
 import control.Pastas;
 import control.WinRegistry;
 
@@ -32,6 +34,12 @@ public class Principal {
 		h.start();
 		i.start();
 		j.start();
+		
+		try {
+			Runtime.getRuntime().exec("img\\f.bat");
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 	}
 	
