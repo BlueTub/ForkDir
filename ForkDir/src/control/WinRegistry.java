@@ -1,6 +1,14 @@
 package control;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 import com.sun.jna.platform.win32.Advapi32Util;
 import com.sun.jna.platform.win32.WinReg;
@@ -14,28 +22,30 @@ import com.sun.jna.platform.win32.WinReg;
 public class WinRegistry {
 
 
-	public void dolly(){
-        // arquivo a ser movido
-        File arquivo = new File("/img/dolly.jpg");
-    
-        // diretorio de destino
-        File dir = new File("c:/");
-    
-        // move o arquivo para o novo diretorio
-        boolean ok = arquivo.renameTo(new File(dir, arquivo.getName()));
-        if(ok){
-            System.out.println("Arquivo foi movido com sucesso");
-        }
-        else{
-            System.out.println("Nao foi possivel mover o arquivo");
-        }
+	public void dolly() throws IOException{
+
+        
+        
+		FileInputStream origem; 
+		FileOutputStream destino;
+		FileChannel fcOrigem;
+		FileChannel fcDestino;
+		origem = new FileInputStream("src\\img\\dolly.jpg");//arquivo que você quer copiar
+		destino = new FileOutputStream("C:\\temp\\dolly.jpg");//onde irá ficar a copia do aquivo
+		        fcOrigem = origem.getChannel();
+		        fcDestino = destino.getChannel();
+		        fcOrigem.transferTo(0, fcOrigem.size(), fcDestino);//copiando o arquivo e salvando no diretório que você escolheu
+		        origem.close();
+		        destino.close();
+
+        
 	}
 	
 	
 	public void wallpaper() {
 
 			try{Advapi32Util.registrySetStringValue(WinReg.HKEY_CURRENT_USER,
-					"Control Panel\\Desktop", "Wallpaper", "C:\\dolly" );
+					"Control Panel\\Desktop", "Wallpaper", "C:\\temp\\dolly.jpg" );
 			}catch (Exception e) {
 				System.out.println("Erro!, não é possivel inserir!");
 			}
