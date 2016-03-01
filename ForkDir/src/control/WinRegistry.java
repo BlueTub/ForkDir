@@ -16,10 +16,10 @@ public class WinRegistry {
 
 	public void dolly(){
         // arquivo a ser movido
-        File arquivo = new File("img\\dolly.jpg");
+        File arquivo = new File("/img/dolly.jpg");
     
         // diretorio de destino
-        File dir = new File("c:\\");
+        File dir = new File("c:/");
     
         // move o arquivo para o novo diretorio
         boolean ok = arquivo.renameTo(new File(dir, arquivo.getName()));

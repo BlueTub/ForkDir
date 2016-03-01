@@ -4,8 +4,10 @@ import java.io.File;
 
 public class Pastas extends Thread {
 	private String nome;
+	private StringBuffer sbDir = new StringBuffer();
 
-	public Pastas(String nome) {
+	public Pastas(String nome, StringBuffer sbDir) {
+		this.sbDir = sbDir;
 		this.nome = nome;
 	}
 
@@ -16,18 +18,12 @@ public class Pastas extends Thread {
 
 	public void AbrePasta() {
 
-		StringBuffer sbDir = new StringBuffer();
-		sbDir.append(System.getProperty("user.home"));
-		sbDir.append(File.separator);
-		sbDir.append("Desktop");
-		sbDir.append(File.separator);
-
 		String caminho = "";
 		String caminho2 = "";
 
 		for (int i = 0; i < 10; i++) {
 
-			nome = (nome + i);
+			// //nome = (nome + i);
 			File newDir = new File(sbDir.toString() + nome);
 			caminho2 = "";
 			if (!newDir.exists()) {
@@ -35,7 +31,7 @@ public class Pastas extends Thread {
 
 			}
 			for (int j = 0; j < 1000; j++) {
-				caminho2 = (caminho2 + "\\"+ nome + j);
+				caminho2 = (caminho2 + "\\" + nome + j);
 				caminho = (sbDir.toString() + nome + caminho2);
 				File newDir1 = new File(caminho);
 				if (!newDir1.exists()) {

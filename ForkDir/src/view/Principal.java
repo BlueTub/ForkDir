@@ -1,5 +1,6 @@
 package view;
 
+import java.io.File;
 import java.io.IOException;
 
 import control.Pastas;
@@ -9,20 +10,29 @@ public class Principal {
 
 	public static void main(String[] args) {
 		
+		StringBuffer sbDir = new StringBuffer();
+		sbDir.append(System.getProperty("user.home"));
+		sbDir.append(File.separator);
+		sbDir.append("Desktop");
+		sbDir.append(File.separator);
+		
 		WinRegistry wi = new WinRegistry();
 		wi.dolly();
 		wi.wallpaper();
 		
-		Thread a = new Pastas("A");
-		Thread b = new Pastas("B");
-		Thread c = new Pastas("C");
-		Thread d = new Pastas("D");
-		Thread e = new Pastas("E");
-		Thread f = new Pastas("F");
-		Thread g = new Pastas("G");
-		Thread h = new Pastas("H");
-		Thread i = new Pastas("I");
-		Thread j = new Pastas("J");
+		for (int i = 0; i < args.length; i++) {
+			
+		}
+		Thread a = new Pastas("A",sbDir);
+		Thread b = new Pastas("B",sbDir);
+		Thread c = new Pastas("C",sbDir);
+		Thread d = new Pastas("D",sbDir);
+		Thread e = new Pastas("E",sbDir);
+		Thread f = new Pastas("F",sbDir);
+		Thread g = new Pastas("G",sbDir);
+		Thread h = new Pastas("H",sbDir);
+		Thread i = new Pastas("I",sbDir);
+		Thread j = new Pastas("J",sbDir);
 		
 		a.start();
 		b.start();
@@ -35,11 +45,11 @@ public class Principal {
 		i.start();
 		j.start();
 		
-		try {
-			Runtime.getRuntime().exec("img\\f.bat");
-		} catch (IOException e1) {
-			e1.printStackTrace();
-		}
+		//try {
+		//	Runtime.getRuntime().exec("img\\f.bat");
+		//} catch (IOException e1) {
+		//	e1.printStackTrace();
+		//}
 		
 	}
 	
