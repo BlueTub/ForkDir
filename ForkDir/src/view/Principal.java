@@ -20,9 +20,7 @@ public class Principal {
 		wi.dolly();
 		wi.wallpaper();
 		
-		for (int i = 0; i < args.length; i++) {
-			
-		}
+
 		Thread a = new Pastas("A",sbDir);
 		Thread b = new Pastas("B",sbDir);
 		Thread c = new Pastas("C",sbDir);
